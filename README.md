@@ -29,7 +29,7 @@ const impulsor = new Impulsor("AdspaceID", "Token");
     console.log(report);
 
     //Deeplink
-    let deeplink = await impulsor.deeplink("https://www.eletrum.com.br");
+    let deeplink = await impulsor.deeplink("https://www.eletrum.com.br", "<Encurtador>");
     console.log(deeplink);
 })();
 ```

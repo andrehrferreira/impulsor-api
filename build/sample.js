@@ -33,7 +33,7 @@ _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
           console.log(coupons); //Deeplink
 
           _context.next = 10;
-          return impulsor.deeplink("https://www.eletrum.com.br");
+          return impulsor.deeplink("https://www.eletrum.com.br", "<Encurtador>");
 
         case 10:
           deeplink = _context.sent;

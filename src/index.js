@@ -24,8 +24,14 @@ export default class Impulsor {
         return buffer.data;
     }
 
-    async deeplink(url){
-        let buffer = await axios.get(`${this.api}deeplink?token=${this.token}&adspace=${this.adspaceId}&url=${decodeURIComponent(url)}`);
+    async deeplink(url, shortener = null){
+        let buffer;
+
+        if(typeof shortener == "string")
+            buffer = await axios.get(`${this.api}deeplink?token=${this.token}&adspace=${this.adspaceId}&url=${decodeURIComponent(url)}&shortener=${decodeURIComponent(shortener)}`);
+        else
+            buffer = await axios.get(`${this.api}deeplink?token=${this.token}&adspace=${this.adspaceId}&url=${decodeURIComponent(url)}`);
+
         return buffer.data;
     }
 }

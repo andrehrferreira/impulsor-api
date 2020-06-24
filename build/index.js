@@ -68,20 +68,25 @@ var Impulsor = /*#__PURE__*/function () {
   }, {
     key: "coupons",
     value: function () {
-      var _coupons = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(offset, limit) {
-        var buffer;
+      var _coupons = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+        var offset,
+            limit,
+            buffer,
+            _args2 = arguments;
         return regeneratorRuntime.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
+                offset = _args2.length > 0 && _args2[0] !== undefined ? _args2[0] : 0;
+                limit = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : 100;
+                _context2.next = 4;
                 return _axios["default"].get("".concat(this.api, "coupons?token=").concat(this.token, "&limit=").concat(limit, "&skip=").concat(offset));
 
-              case 2:
+              case 4:
                 buffer = _context2.sent;
                 return _context2.abrupt("return", buffer.data);
 
-              case 4:
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -89,7 +94,7 @@ var Impulsor = /*#__PURE__*/function () {
         }, _callee2, this);
       }));
 
-      function coupons(_x, _x2) {
+      function coupons() {
         return _coupons.apply(this, arguments);
       }
 
@@ -98,20 +103,25 @@ var Impulsor = /*#__PURE__*/function () {
   }, {
     key: "banners",
     value: function () {
-      var _banners = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(offset, limit) {
-        var buffer;
+      var _banners = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+        var offset,
+            limit,
+            buffer,
+            _args3 = arguments;
         return regeneratorRuntime.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                _context3.next = 2;
+                offset = _args3.length > 0 && _args3[0] !== undefined ? _args3[0] : 0;
+                limit = _args3.length > 1 && _args3[1] !== undefined ? _args3[1] : 100;
+                _context3.next = 4;
                 return _axios["default"].get("".concat(this.api, "banners?token=").concat(this.token, "&limit=").concat(limit, "&skip=").concat(offset));
 
-              case 2:
+              case 4:
                 buffer = _context3.sent;
                 return _context3.abrupt("return", buffer.data);
 
-              case 4:
+              case 6:
               case "end":
                 return _context3.stop();
             }
@@ -119,7 +129,7 @@ var Impulsor = /*#__PURE__*/function () {
         }, _callee3, this);
       }));
 
-      function banners(_x3, _x4) {
+      function banners() {
         return _banners.apply(this, arguments);
       }
 
@@ -129,19 +139,39 @@ var Impulsor = /*#__PURE__*/function () {
     key: "deeplink",
     value: function () {
       var _deeplink = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(url) {
-        var buffer;
+        var shortener,
+            buffer,
+            _args4 = arguments;
         return regeneratorRuntime.wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                _context4.next = 2;
-                return _axios["default"].get("".concat(this.api, "deeplink?token=").concat(this.token, "&adspace=").concat(this.adspaceId, "&url=").concat(decodeURIComponent(url)));
+                shortener = _args4.length > 1 && _args4[1] !== undefined ? _args4[1] : null;
 
-              case 2:
-                buffer = _context4.sent;
-                return _context4.abrupt("return", buffer.data);
+                if (!(typeof shortener == "string")) {
+                  _context4.next = 7;
+                  break;
+                }
+
+                _context4.next = 4;
+                return _axios["default"].get("".concat(this.api, "deeplink?token=").concat(this.token, "&adspace=").concat(this.adspaceId, "&url=").concat(decodeURIComponent(url), "&shortener=").concat(decodeURIComponent(shortener)));
 
               case 4:
+                buffer = _context4.sent;
+                _context4.next = 10;
+                break;
+
+              case 7:
+                _context4.next = 9;
+                return _axios["default"].get("".concat(this.api, "deeplink?token=").concat(this.token, "&adspace=").concat(this.adspaceId, "&url=").concat(decodeURIComponent(url)));
+
+              case 9:
+                buffer = _context4.sent;
+
+              case 10:
+                return _context4.abrupt("return", buffer.data);
+
+              case 11:
               case "end":
                 return _context4.stop();
             }
@@ -149,7 +179,7 @@ var Impulsor = /*#__PURE__*/function () {
         }, _callee4, this);
       }));
 
-      function deeplink(_x5) {
+      function deeplink(_x) {
         return _deeplink.apply(this, arguments);
       }
 
